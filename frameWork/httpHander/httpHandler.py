@@ -73,6 +73,7 @@ class HttpHandle(object):
     def get_resonse_status_code(self):
         return self.http_response.status_code
      
+    #得到响应文本 
     def get_resonse_body(self):
         if  isinstance(self.http_response.content, bytes):
             self.http_response_body = self.http_response.content.decode()
@@ -80,15 +81,20 @@ class HttpHandle(object):
             self.http_response_body = self.http_response.content     
         return  self.http_response_body
     
+    #打印结果
     def print_response_body(self): 
         Log.log_info(self.get_resonse_body())
         
     #将响应内容转换成python结构 
     def  conver_response_body_to_struct(self):
         #去除null,用None代替null,否则eval 不能处理
-        response = self.get_resonse_body().replace("null","None")
+        response = self.get_resonse_body().replace("null", "None")
         return eval(response)       
-              
+    
+    #将response装换成dic,list等结构,并返回
+    def get_response_struct(self):         
+        return self.conver_response_body_to_struct()
+     
     def reponse_code_status_should_be(self, status_code):
         if status_code != self.get_resonse_status_code():
             Log.log_error_info("status  code should be %d, but the  real value is %d"%( status_code),self.get_resonse_status_code())
@@ -107,13 +113,22 @@ class HttpHandle(object):
         else:    
             Log.log_info("Verify..., response struct is ok.")  
     
-    #只 能比对第一层的dic
+    #只能比对第一层的dic
     def  response_dictionary_should_have_key(self, key): 
         dic =  self.conver_response_body_to_struct()
         if key not in dic:
             Log.log_error_info("Verify..., response key has no key: %s"%(key))
         else:
             Log.log_info("Verify..., response key is ok.")  
+            
+    #只能比对第一层的dic
+    def  response_dictionary_should_have_keys(self, key_list = []): 
+        dic =  self.conver_response_body_to_struct()
+        for key in key_list:
+            if key not in dic:
+                Log.log_error_info("Verify..., response key has no key: %s"%(key))
+        else:
+            Log.log_info("Verify..., response keys is ok.")          
    
     #只 能比对第一层的dic
     def  response_dictionary_should_have_key_value(self, key, value): 
@@ -132,7 +147,10 @@ class HttpHandle(object):
             Log.log_info("Verify..., response content is ok.")  
              
     def resonse_body_equal(self,  right_response):
-        pass
+        if right_response != self.get_resonse_body():
+            Log.log_error_info("Verify..., response string does no  equal string: %s"%(right_response))
+        else:
+            Log.log_info("Verify..., response content is ok.")  
     
     
     

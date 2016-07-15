@@ -5,6 +5,6 @@ import sys
 
 if __name__ == "__main__":
    # debug.AdminConsoleTest("test_transactions").debug()
-    debug.AdminConsoleTest("test_filterInvestment").debug()
+    debug.AdminConsoleTest("test_investSummary").debug()
     
   

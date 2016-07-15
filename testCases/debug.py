@@ -54,4 +54,18 @@ class AdminConsoleTest(unittest.TestCase):
         http_hander.response_string_should_include('"rows":[{"registDate":"2015-12-25"')
         http_hander.response_string_should_include('{"registDate":"2015-12-25","investDate":"2016-02-03","actorId":11335844,"actorName":"黄勇","loanId":340401,"loanType":"group","investType":"正常投资","investAmount":666.66}')
 
-        
+     
+    #https://drac-demo.dianrong.com/adminconsole/api/actor/{parameter}/investSummary
+    def test_investSummary(self):
+        url = self.config["Url"]["investSummary"]
+        actor = '11335844'
+        url = PUtils.replace_paramter(url, actor)
+        http_hander = HttpHandle()
+        http_hander.do_get(url)  
+        http_hander.reponse_code_status_should_be(200)
+        http_hander.response_body_should_be_dictionary_struct()
+        http_hander.print_response_body()
+        http_hander.response_string_should_include('"verified":"失效"')
+        http_hander.response_dictionary_should_have_keys(["content", "errMsg", "code", "errName"])
+
+     
