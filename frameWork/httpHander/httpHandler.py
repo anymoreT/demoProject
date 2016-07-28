@@ -128,7 +128,9 @@ class HttpHandle(object):
             if key not in dic:
                 Log.log_error_info("Verify..., response key has no key: %s"%(key))
         else:
-            Log.log_info("Verify..., response keys is ok.")          
+            Log.log_info("Verify..., response keys is ok.")     
+            
+                 
    
     #只 能比对第一层的dic
     def  response_dictionary_should_have_key_value(self, key, value): 
@@ -142,7 +144,7 @@ class HttpHandle(object):
     #将response看出一串字符串  
     def response_string_should_include(self, sub_string):
         if sub_string not in self.get_resonse_body():
-            Log.log_error_info("Verify..., response string does no  inclue string: %s"%(sub_string))
+            Log.log_error_info("Verify..., response string does no  inclue string: %s, real response is: %s"%(sub_string, self.get_resonse_body()))
         else:
             Log.log_info("Verify..., response content is ok.")  
              

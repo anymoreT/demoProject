@@ -74,7 +74,10 @@ class H1Text(TextElement):
     def __init__(self,text):
         TextElement.__init__(self,"xpath","//H1[contains(text(),'%s')]"%(text))
 
-
+class H1SmallText(TextElement):
+    def __init__(self,text):
+        TextElement.__init__(self,"xpath","//h1[contains(text(),'%s')]"%(text))
+        
 class H2Text(TextElement):
     def __init__(self,text):
         TextElement.__init__(self,"xpath","//H2[contains(text(),'%s')]"%(text))

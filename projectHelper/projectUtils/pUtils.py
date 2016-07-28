@@ -39,14 +39,12 @@ class PUtils(object):
         else:
             return request_str
         return request_str
-            
-        
+               
+#用于保证case在指定测试集里面运行 
     
-    
-#用于保证case在指定测试集里面运行         
 def runTagIn(*tags):
-    run_testSuit =  PUtils.get_project_testSuit()
-    if run_testSuit in tags:
-        return True
-    else:
-        return False           
+        run_testSuit =  PUtils.get_project_testSuit()
+        if run_testSuit in tags:
+            return True
+        else:
+            return False           
