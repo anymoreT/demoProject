@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from frameWork.web.importAll import *
+from dianRongQa.web.importAll import *
 import pdb
 
 class UserNameTextInput(TextInputElement):

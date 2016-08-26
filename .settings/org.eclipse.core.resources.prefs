@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//projectHelper/projectUtils/pUtils.py=utf-8
+encoding//projectHelper/webElements/commonElement.py=utf-8
+encoding//projectHelper/webElements/importAll.py=utf-8
+encoding//projectHelper/webElements/login.py=utf-8
+encoding//testCases/test_adminCrm.py=utf-8
+encoding//testCases/test_adminMainSite.py=utf-8
+encoding/debug_test.py=utf-8
+encoding/testSuit.py=utf-8

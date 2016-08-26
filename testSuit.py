@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from unittest import TestSuite,TestLoader
-import HTMLTestRunner 
+from dianRongQa import HTMLTestRunner 
 import pdb
 import sys,os
 
@@ -13,6 +13,7 @@ def run_all_cases():
 
 def run_suit(suit):
     root_path = os.path.dirname(".")
+    root_path = os.path.join(root_path, "report")
     filename = 'result.html'
     report_path = os.path.join(root_path, filename)
     file_handle= open(report_path, 'wb')
@@ -20,7 +21,7 @@ def run_suit(suit):
     runner.run(suit)
  
 def get_runner(file_handle):
-    runner = HTMLTestRunner.HTMLTestRunner(stream= file_handle, title="Api testing result")    
+    runner = HTMLTestRunner.HTMLTestRunner(stream= file_handle, title="Demo testing result")    
     return runner
  
 run_all_cases()    
