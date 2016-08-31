@@ -14,7 +14,7 @@ class AdminConsoleTest(unittest.TestCase):
         self.config = PUtils.get_project_config("adminMainSite.ymal")
         self.env = Tools.get_test_suit_env()
      
-    @unittest.skipUnless(Tools.runCaseIn("admin","ui"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
     def test_login_main_page(self):
         WebDriver.start_driver()
         WebDriver.go_to_url(self.config['Login'][self.env])
@@ -25,3 +25,5 @@ class AdminConsoleTest(unittest.TestCase):
         login.LoginButton().click()
         WebDriver.switch_to_frame("center-frame")
         commonElement.H1SmallText("Welcome").wait_element_present()
+        
+        

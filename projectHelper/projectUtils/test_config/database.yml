@@ -1,0 +1,29 @@
+CrmMysql:
+   Dev:
+      host: "10.18.19.43 "
+      user: "wfcrm"
+      password: "crmdemo_uc"
+      db: "wfcrm"
+      port: "3307"
+   Demo:
+      host: "10.18.19.43"
+      user: "wfcrm"
+      password: "crmdemo_uc"
+      db: "wfcrm"
+      port: "3308"  
+      
+WorkflowOracle:
+  Dev:
+     host: "10.18.19.33"
+     user: "sl_main"
+     password: "sl_main"
+     db: "dbdev2"
+     port: "1521"
+  Demo:
+      host: "10.18.19.32"
+      user: "slprod"
+      password: "slsg20"
+      db: "testdb2"
+      port: "1521"          
+      
+     

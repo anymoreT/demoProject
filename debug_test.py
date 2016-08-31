@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from testCases import test_adminCrm,test_adminMainSite,test_http_apis
+from testCases import test_adminCrm,test_adminMainSite,test_http_apis,test_dabase
 
 import sys
 
@@ -10,7 +10,8 @@ if __name__ == "__main__":
     # test_adminCrm.AdminConsoleCrmTest("test_investSummary").debug()
     # test_adminCrm.AdminConsoleCrmTest("test_lender").debug()
     #test_adminMainSite.AdminConsoleTest("test_login_main_page").debug()
-      test_http_apis.TestApis("test_regsiter_lender_user").debug()
+    #test_http_apis.TestApis("test_regsiter_lender_user").debug()
+      test_dabase.DbTest("test_mysql").debug()
     
     
   

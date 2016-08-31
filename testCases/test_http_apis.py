@@ -12,6 +12,7 @@ class TestApis(unittest.TestCase):
         self.env = Tools.get_test_suit_env()
      
      #注册主站用户，并设置登陆密码和交易密码   
+    @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags") 
     def test_regsiter_lender_user(self):
         phone_or_email = None
         password = "Cdu_dianron123"
