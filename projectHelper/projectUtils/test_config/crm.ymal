@@ -1,0 +1,26 @@
+Login_Page:
+   Dev: "https://crm-dev.dianrong.com"
+   Demo: "https://crm-demo.dianrong.com"
+   
+UniauthLogin:
+   Dev: "https://crm-dev.dianrong.com"
+   Demo: "https://crm-demo.dianrong.com"
+      
+Account:
+   Dev:
+     Sales: sales_cdu_manager1@dianrong.com,$cdu1234R,销售组1
+     Sales_assist1: sales_cdu_assistant1@dianrong.com,$cdu1234R,销售组1
+     Sales_assist0: sales_cdu_assistant0@dianrong.com,﻿$cdu1234R,成都外呼压力测试组
+     Sales_leader1: sales_cdu_leader1@dianrong.com,$cdu1234R,销售组1
+     Service: service_cdu_manager0@dianrong.com,$cdu1234R,客服组0
+     Service_assist0: service_cdu_assistant0@dianrong.com,$cdu1234R,客服组0
+   Demo:
+     Sales: sales_cdu_manager1@dianrong.com,$cdu1234R,销售组1
+     Sales_leader1: sales_cdu_leader1@dianrong.com,$cdu1234R,销售组1
+     Sales_leader0: sales_cdu_leader0@dianrong.com,$cdu1234R,销售组0
+     Sales_member0: sales_cdu_member0@dianrong.com,$cdu1234R,销售组0
+     Sales_member1: sales_cdu_member1@dianrong.com,$cdu1234R,销售组1
+     Sales_assist1: sales_cdu_assistant1@dianrong.com,$cdu1234R,销售组1
+     Sales_assist0: sales_cdu_assistant0@dianrong.com,$cdu1234R,销售组0
+     Service: service_cdu_manager0@dianrong.com,$cdu1234R,客服组0
+     Service_assist0: service_cdu_assistant0@dianrong.com,$cdu1234R,客服组0

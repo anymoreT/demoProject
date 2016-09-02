@@ -5,11 +5,13 @@ from projectHelper.projectUtils.pUtils  import PUtils
 from dianRongQa.log.log import Log
 import pdb
 from dianRongQa.utils.tools import  Tools
+from bs4 import BeautifulSoup
 
 class TestApis(unittest.TestCase):
     def setUp(self):
         self.config = PUtils.get_project_config("lender_config.ymal")
         self.env = Tools.get_test_suit_env()
+        self.crm_conf = PUtils.get_project_config("crm.ymal")
      
      #注册主站用户，并设置登陆密码和交易密码   
     @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags") 
@@ -62,3 +64,38 @@ class TestApis(unittest.TestCase):
         if http_handle.get_response_status_code() != 200:
             Log.log_error_info("meet error after send user_tradekey_url")
         print( phone_or_email,user_id,password,trade_key)
+        
+        
+        
+    #登陆crm  
+    @unittest.skipUnless(Tools.runCaseIn("smoke","regression"),"skip case if not in tags") 
+    def test_login_crm(self):
+        http_handle = HttpHandle()
+        http_handle.do_get(self.config["captcha_url"][self.env])
+        uniauth_page = "https://passport-demo.dianrong.com/login?service=https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas"
+        http_handle.do_get(uniauth_page)
+        html_page = http_handle.get_response_body()
+        soup = BeautifulSoup(html_page) 
+        lt_value = soup.select("input[name=\"lt\"]")[0]['value']
+        execution = soup.select("input[name=\"execution\"]")[0]['value']
+        http_handle.update_header({'Content-Type' : 'application/x-www-form-urlencoded',
+                                                                      'Referer' : 'https://passport-demo.dianrong.com/login?service=https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas',
+                                                                       'Host' : 'passport-demo.dianrong.com'})
+            
+           
+        account_list= self.crm_conf['Account'][self.env]['Sales'].strip().split(",") 
+        form_data = {"username": account_list[0],
+                "password":  account_list[1],
+                "lt": lt_value,
+                "execution" : execution,
+                "domain": "https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas",
+                "_eventId": "submit",
+                "submit": "登录"
+            }
+        res = http_handle.do_post("https://passport-demo.dianrong.com/login?service=https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas", data =form_data,  allow_redirects = False)
+        url =  res.headers['Location']
+        http_handle.delete_header(["Content-Type", "Host"])
+        http_handle.do_get(url, allow_redirects = False)
+        http_handle.do_get("https://crm-demo.dianrong.com/")
+        http_handle.response_code_status_should_be(200)
+        http_handle.response_string_should_include("欢迎 ！")
