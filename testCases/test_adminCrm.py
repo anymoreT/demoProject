@@ -44,7 +44,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
      
     #测试投资者过滤    
     #POST /api/investment/filterInvestment
-    @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("sm"),"skip case if not in tags") 
     def test_filterInvestment(self):
         url = self.config["Url"]["filterInvestment"]
         http_hander = HttpHandle()

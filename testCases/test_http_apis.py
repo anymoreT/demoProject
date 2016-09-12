@@ -2,6 +2,7 @@
 import unittest 
 from dianRongQa.httpHander.httpHandler import HttpHandle
 from projectHelper.projectUtils.pUtils  import PUtils
+from projectHelper.projectUtils.mq  import MqHttpHelper
 from dianRongQa.log.log import Log
 import pdb
 from dianRongQa.utils.tools import  Tools
@@ -14,7 +15,7 @@ class TestApis(unittest.TestCase):
         self.crm_conf = PUtils.get_project_config("crm.ymal")
      
      #注册主站用户，并设置登陆密码和交易密码   
-    @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("smoke","smoke"),"skip case if not in tags") 
     def test_regsiter_lender_user(self):
         phone_or_email = None
         password = "Cdu_dianron123"
@@ -99,3 +100,9 @@ class TestApis(unittest.TestCase):
         http_handle.do_get("https://crm-demo.dianrong.com/")
         http_handle.response_code_status_should_be(200)
         http_handle.response_string_should_include("欢迎 ！")
+        
+    def test_send_mq(self):
+        mq = MqHttpHelper()   
+        mq.login_mq()
+        mq.set_mq_data(routing_key = "crm.queue.actor")
+        mq.create_lender_user()

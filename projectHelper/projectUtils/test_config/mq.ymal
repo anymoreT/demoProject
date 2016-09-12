@@ -1,0 +1,33 @@
+Account:
+   Dev: "admin,dangerous"
+   Demo:  "admin,dangerous"
+   
+   
+login:
+   Dev: "http://10.18.19.64:15674/api/whoami"
+   Demo: "http://10.18.19.64:15672/api/whoami"
+   
+bind_referId:
+   Dev: "http://10.18.19.64:15674/api/exchanges/%2Fmsgbus/amq.default/publish"
+   Demo: "http://10.18.19.64:15672/api/exchanges/%2Fmsgbus/amq.default/publish"
+
+user_realname_auth:
+   Dev: "http://10.18.19.64:15674/api/exchanges/%2Fmsgbus/crm.exch.sync/publish"
+   Demo: "http://10.18.19.64:15672/api/exchanges/%2Fmsgbus/crm.exch.sync/publish"
+
+create_user:
+   Dev:  "http://10.18.19.64:15674/api/exchanges/%2Fmsgbus/amq.default/publish"
+   Demo: "http://10.18.19.64:15672/api/exchanges/%2Fmsgbus/amq.default/publish"
+   
+create_loan_intent:
+   Dev: "http://10.18.19.64:15674/api/exchanges/%2Fmsgbus/amq.default/publish"
+   Demo: "http://10.18.19.64:15672/api/exchanges/%2Fmsgbus/amq.default/publish"   
+   
+create_loan:
+   Dev: "http://10.18.19.64:15674/api/exchanges/%2Fmsgbus/amq.default/publish"
+   Demo: "http://10.18.19.64:15672/api/exchanges/%2Fmsgbus/amq.default/publish"
+   
+refuse_loan:
+   Dev: "http://10.18.19.64:15674/api/exchanges/%2Fmsgbus/crm.exch.sync/publish"
+   Demo: "http://10.18.19.64:15672/api/exchanges/%2Fmsgbus/crm.exch.sync/publish"
+
