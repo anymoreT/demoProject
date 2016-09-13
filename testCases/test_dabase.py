@@ -6,8 +6,10 @@ from dianRongQa.httpHander.httpHandler import HttpHandle
 from projectHelper.projectUtils.pUtils  import PUtils
 from projectHelper.projectUtils.workflowOracle import WorkflowOracle
 from projectHelper.projectUtils.crmMysql import CrmMysql
+from projectHelper.projectUtils.mongo import Mongo
 from dianRongQa.utils.tools import  Tools
 import pdb
+import datetime
 
 
 class DbTest(unittest.TestCase):
@@ -33,3 +35,48 @@ class DbTest(unittest.TestCase):
         sql = 'SELECT * FROM wfcrm.actor where crm_customer_id=24943'
         res = mysql_instance.query(sql)
         print("mysql test finished %s"%(res))
+
+    def  test_mongo_db(self):
+        mongo_instance = Mongo().get_db_instance()
+        table = mongo_instance['neo.merchant.OrderStatisticsResult']
+        print(table.find_one())
+        uc_time = datetime.datetime.utcnow()
+        row_data = {
+            "_class" : "com.dianrong.neo.merchant.model.entity.OrderStatisticsResult",
+            "cellphone" : "18699999999",
+            "platform" : "eBay",
+            "account" : "wandon-49",
+            "applyTime" : uc_time,
+            "registerTime" : uc_time,
+            "totalAmount" : 21302.97,
+            "totalCount" : 6,
+            "data" : [ 
+                      {
+                       "year" : 2016,
+                       "month" : 8,
+                       "count" : 3,
+                       "amount" : 300.0,
+                       "currencyID" : "GBP"
+                       }, 
+                      {
+                       "year" : 2016,
+                       "month" : 7,
+                       "count" : 1,
+                       "amount" : 5000.99,
+                       "currencyID" : "GBP"
+                       }, 
+                      {
+                       "year" : 2016,
+                       "month" : 6,
+                       "count" : 2,
+                       "amount" : 16001.98,
+                       "currencyID" : "GBP"
+                       }
+                      ],
+                    "createTime" : uc_time,
+                    "updateTime" : uc_time
+}
+        table.insert(row_data)
+
+        
+        

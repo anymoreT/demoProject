@@ -9,10 +9,10 @@ if __name__ == "__main__":
 #     test_adminCrm.AdminConsoleCrmTest("test_filterInvestment").debug()
     # test_adminCrm.AdminConsoleCrmTest("test_investSummary").debug()
     # test_adminCrm.AdminConsoleCrmTest("test_lender").debug()
-    #test_adminMainSite.AdminConsoleTest("test_login_main_page").debug()
-    #test_http_apis.TestApis("test_regsiter_lender_user").debug()
-    #  test_dabase.DbTest("test_mysql").debug()
-    test_http_apis.TestApis("test_login_crm").debug()
+   # test_adminMainSite.AdminConsoleTest("test_login_main_page").debug()
+   # test_http_apis.TestApis("test_regsiter_lender_user").debug()
+      test_dabase.DbTest("test_mongo_db").debug()
+   # test_http_apis.TestApis("test_send_mq").debug()
     
     
     

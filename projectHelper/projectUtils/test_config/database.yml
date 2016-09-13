@@ -26,4 +26,18 @@ WorkflowOracle:
       db: "testdb2"
       port: "1521"          
       
+ 
+Mongodb:
+  Dev:
+     host: 
+     user: 
+     password: 
+     db:
+     port: 
+  Demo:
+      host: "127.0.0.1"
+      user: "neo"
+      password: "6c7cb51c-2f70-11e5-958a-001f16377cc4"
+      db: "matrix_db"
+      port: "8000"
      
