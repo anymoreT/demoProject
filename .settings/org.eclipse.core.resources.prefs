@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//projectHelper/projectUtils/crmMysql.py=utf-8
+encoding//projectHelper/projectUtils/mongo.py=utf-8
+encoding//projectHelper/projectUtils/mq.py=utf-8
 encoding//projectHelper/projectUtils/pUtils.py=utf-8
 encoding//projectHelper/projectUtils/workflowOracle.py=utf-8
 encoding//projectHelper/webElements/commonElement.py=utf-8
