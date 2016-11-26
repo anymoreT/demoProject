@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from dianRongQa.utils.tools import Tools
+from pyQa.utils.tools import Tools
 import os
 import sys
 import pdb

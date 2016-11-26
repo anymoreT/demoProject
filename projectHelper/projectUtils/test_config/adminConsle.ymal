@@ -1,5 +1,0 @@
-Url:
-   transactions: https://drac-demo.dianrong.com/adminconsole/api/actor/{0}/transactions
-   filterInvestment: https://drac-demo.dianrong.com/adminconsole/api/investment/filterInvestment
-   investSummary: https://drac-demo.dianrong.com/adminconsole/api/actor/{0}/investSummary/{1}
-   lender: https://drac-demo.dianrong.com/api/actor/lender/{0}

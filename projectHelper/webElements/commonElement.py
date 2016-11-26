@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from dianRongQa.web.importAll import *
+from pyQa.web.importAll import *
 import pdb
 
 

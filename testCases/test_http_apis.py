@@ -1,11 +1,10 @@
 # -*- coding:utf-8 -*-
 import unittest 
-from dianRongQa.httpHander.httpHandler import HttpHandle
+from pyQa.httpHander.httpHandler import HttpHandle
 from projectHelper.projectUtils.pUtils  import PUtils
-from projectHelper.projectUtils.mq  import MqHttpHelper
-from dianRongQa.log.log import Log
+from pyQa.log.log import Log
 import pdb
-from dianRongQa.utils.tools import  Tools
+from pyQa.utils.tools import  Tools
 from bs4 import BeautifulSoup
 
 class TestApis(unittest.TestCase):
@@ -73,15 +72,15 @@ class TestApis(unittest.TestCase):
     def test_login_crm(self):
         http_handle = HttpHandle()
         http_handle.do_get(self.config["captcha_url"][self.env])
-        uniauth_page = "https://passport-demo.dianrong.com/login?service=https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas"
+        uniauth_page = "https://passport-demo.pyQa.com/login?service=https%3A%2F%2Fcrm-demo.pyQa.com%2Flogin%2Fcas"
         http_handle.do_get(uniauth_page)
         html_page = http_handle.get_response_body()
         soup = BeautifulSoup(html_page) 
         lt_value = soup.select("input[name=\"lt\"]")[0]['value']
         execution = soup.select("input[name=\"execution\"]")[0]['value']
         http_handle.update_header({'Content-Type' : 'application/x-www-form-urlencoded',
-                                                                      'Referer' : 'https://passport-demo.dianrong.com/login?service=https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas',
-                                                                       'Host' : 'passport-demo.dianrong.com'})
+                                                                      'Referer' : 'https://passport-demo.pyQa.com/login?service=https%3A%2F%2Fcrm-demo.pyQa.com%2Flogin%2Fcas',
+                                                                       'Host' : 'passport-demo.pyQa.com'})
             
            
         account_list= self.crm_conf['Account'][self.env]['Sales'].strip().split(",") 
@@ -89,20 +88,16 @@ class TestApis(unittest.TestCase):
                 "password":  account_list[1],
                 "lt": lt_value,
                 "execution" : execution,
-                "domain": "https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas",
+                "domain": "https%3A%2F%2Fcrm-demo.pyQa.com%2Flogin%2Fcas",
                 "_eventId": "submit",
                 "submit": "登录"
             }
-        res = http_handle.do_post("https://passport-demo.dianrong.com/login?service=https%3A%2F%2Fcrm-demo.dianrong.com%2Flogin%2Fcas", data =form_data,  allow_redirects = False)
+        res = http_handle.do_post("https://passport-demo.pyQa.com/login?service=https%3A%2F%2Fcrm-demo.pyQa.com%2Flogin%2Fcas", data =form_data,  allow_redirects = False)
         url =  res.headers['Location']
         http_handle.delete_header(["Content-Type", "Host"])
         http_handle.do_get(url, allow_redirects = False)
-        http_handle.do_get("https://crm-demo.dianrong.com/")
+        http_handle.do_get("https://crm-demo.pyQa.com/")
         http_handle.response_code_status_should_be(200)
         http_handle.response_string_should_include("欢迎 ！")
         
-    def test_send_mq(self):
-        mq = MqHttpHelper()   
-        mq.login_mq()
-        mq.set_mq_data(routing_key = "crm.queue.actor")
-        mq.create_lender_user()
+ 

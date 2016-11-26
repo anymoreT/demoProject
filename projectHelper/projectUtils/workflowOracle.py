@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
-from dianRongQa.utils.tools import  Tools
+from pyQa.utils.tools import  Tools
 from projectHelper.projectUtils.pUtils  import PUtils
-from dianRongQa.database.mysqlUtil import MysqlUtil
-from dianRongQa.database.oracleUtil import OracleUtil
+from pyQa.database.mysqlUtil import MysqlUtil
+from pyQa.database.oracleUtil import OracleUtil
 import pdb
 
 class WorkflowOracle(object):

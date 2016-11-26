@@ -1,15 +1,12 @@
 # -*- coding:utf-8 -*-
-from dianRongQa.web.importAll import *
+from pyQa.web.importAll import *
 import pdb
 
-class UserNameTextInput(TextInputElement):
+class SearchTextInput(TextInputElement):
     def __init__(self):
-        TextInputElement.__init__(self,  "id", "username")
-        
-class PasswordTextInput(TextInputElement):
-    def __init__(self):
-        TextInputElement.__init__(self,  "id", "password")        
+        TextInputElement.__init__(self,  "id", "kw")
+       
 
-class LoginButton(ButtonElement):
+class SearchButton(ButtonElement):
     def __init__(self):
-        TextInputElement.__init__(self,  "name", "submit")               
+        TextInputElement.__init__(self,  "id", "su")               

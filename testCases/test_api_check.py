@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 import unittest 
 import requests
-from dianRongQa.httpHander.httpHandler import HttpHandle
+from pyQa.httpHander.httpHandler import HttpHandle
 from projectHelper.projectUtils.pUtils  import PUtils
-from dianRongQa.log.log import Log
-from dianRongQa.utils.tools import  Tools
+from pyQa.log.log import Log
+from pyQa.utils.tools import  Tools
 
 import pdb
 
@@ -28,7 +28,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
         http_hander.response_string_should_include('{"content":{"transactions":[{"createDate":')
         http_hander.response_string_should_include('{"createDate":"2016-07-06 17:07","type":11,"typeName":"每月还款"')
        
-    #https://drac-demo.dianrong.com/adminconsole/api/actor/{actorId}/transactions
+    #https://drac-demo.pyQa.com/adminconsole/api/actor/{actorId}/transactions
     #测试无效id
     @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
     def test_transactions_with_invalid_actor(self):
@@ -60,7 +60,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
         http_hander.response_string_should_include('{"registDate":"2015-12-25","investDate":"2016-02-03","actorId":11335844,"actorName":"黄勇","loanId":340401,"loanType":"group","investType":"正常投资","investAmount":666.66}')
 
      
-    #https://drac-demo.dianrong.com/adminconsole/api/actor/{parameter}/investSummary
+    #https://drac-demo.pyQa.com/adminconsole/api/actor/{parameter}/investSummary
     @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
     def test_investSummary(self):
         url = self.config["Url"]["investSummary"]
@@ -74,7 +74,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
         http_hander.response_string_should_include('"verified":"失效"')
         http_hander.response_dictionary_should_have_keys(["content", "errMsg", "code", "errName"])
 
-    # https://drac-demo.dianrong.com/api/actor/lender/{0}
+    # https://drac-demo.pyQa.com/api/actor/lender/{0}
     @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
     def test_lender(self): 
         url = self.config["Url"]["lender"]

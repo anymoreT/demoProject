@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from unittest import TestSuite,TestLoader
-from dianRongQa import HTMLTestRunner 
+from pyQa import HTMLTestRunner 
 import pdb
 import sys,os
 
