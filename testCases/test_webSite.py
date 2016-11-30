@@ -6,8 +6,9 @@ from projectHelper.projectUtils.pUtils  import PUtils
 from pyQa.log.log import Log
 import pdb
 from pyQa.utils.webDriver import WebDriver
-from projectHelper.webElements.importAll import *
+from projectHelper.webElements.login import BaiduHomePage
 from pyQa.utils.tools import  Tools
+from pyQa.web.PageElement import *
 
 class WebSiteTest(unittest.TestCase):
     def setUp(self):
@@ -18,8 +19,9 @@ class WebSiteTest(unittest.TestCase):
     def test_goto_baidu_page(self):
         WebDriver.start_driver()
         WebDriver.go_to_url(self.config['Login'][self.env])
-        login.SearchTextInput().wait_element_present()
-        login.SearchTextInput().input("你好")
-        login.SearchButton().click()
+        PageTextInputElement(BaiduHomePage.SearchTextInput).wait_element_present()
+        PageTextInputElement(BaiduHomePage.SearchTextInput).input("测试一下")
+        PageTextInputElement(BaiduHomePage.SearchButton).click()
+
        
         

@@ -1,1 +1,6 @@
-此项目用于验证pyQa基础包
+此项目用于验证pyQa基础包.
+运行生产报告：
+python testSuit.py Demo smoke
+
+运行特定case:
+python debug_test.py Demo smoke

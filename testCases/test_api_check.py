@@ -14,7 +14,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
         self.env = Tools.get_test_suit_env()
         
     
-    @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags")
+    @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
     def test_transactions(self):    
         actor = "11335844"
         url = self.config["Url"]["transactions"]
@@ -30,7 +30,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
        
     #https://drac-demo.pyQa.com/adminconsole/api/actor/{actorId}/transactions
     #测试无效id
-    @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
     def test_transactions_with_invalid_actor(self):
         actor = "999911335844"
         url = self.config["Url"]["transactions"]
@@ -44,7 +44,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
      
     #测试投资者过滤    
     #POST /api/investment/filterInvestment
-    @unittest.skipUnless(Tools.runCaseIn("sm"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
     def test_filterInvestment(self):
         url = self.config["Url"]["filterInvestment"]
         http_hander = HttpHandle()
@@ -61,7 +61,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
 
      
     #https://drac-demo.pyQa.com/adminconsole/api/actor/{parameter}/investSummary
-    @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
     def test_investSummary(self):
         url = self.config["Url"]["investSummary"]
         actor = '11335844'
@@ -75,7 +75,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
         http_hander.response_dictionary_should_have_keys(["content", "errMsg", "code", "errName"])
 
     # https://drac-demo.pyQa.com/api/actor/lender/{0}
-    @unittest.skipUnless(Tools.runCaseIn("admin"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("smoe"),"skip case if not in tags")
     def test_lender(self): 
         url = self.config["Url"]["lender"]
         actor = '11335844'

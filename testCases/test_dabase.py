@@ -6,7 +6,6 @@ from pyQa.httpHander.httpHandler import HttpHandle
 from projectHelper.projectUtils.pUtils  import PUtils
 from projectHelper.projectUtils.workflowOracle import WorkflowOracle
 from projectHelper.projectUtils.crmMysql import CrmMysql
-from projectHelper.projectUtils.mongo import Mongo
 from pyQa.utils.tools import  Tools
 import pdb
 import datetime
