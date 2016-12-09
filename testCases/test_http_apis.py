@@ -16,6 +16,7 @@ class TestApis(unittest.TestCase):
      #注册主站用户，并设置登陆密码和交易密码   
     @unittest.skipUnless(Tools.runCaseIn("smoke","smoke"),"skip case if not in tags") 
     def test_regsiter_lender_user(self):
+        Log.log_case_desc("测试注册用户api:https://www.baidu.com")
         phone_or_email = None
         password = "Cdu_dianron123"
         trade_key = "111111"
@@ -68,8 +69,9 @@ class TestApis(unittest.TestCase):
         
         
     #登陆crm  
-    @unittest.skipUnless(Tools.runCaseIn("smoke","regression"),"skip case if not in tags") 
+    @unittest.skipUnless(Tools.runCaseIn("smoke","smoke"),"skip case if not in tags")
     def test_login_crm(self):
+        Log.log_case_desc("测试登录api:https://www.baidu.com")
         http_handle = HttpHandle()
         http_handle.do_get(self.config["captcha_url"][self.env])
         uniauth_page = "https://passport-demo.pyQa.com/login?service=https%3A%2F%2Fcrm-demo.pyQa.com%2Flogin%2Fcas"

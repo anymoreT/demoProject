@@ -10,13 +10,15 @@ import pdb
 
 class AdminConsoleCrmTest(unittest.TestCase):
     def setUp(self):
-        self.config = PUtils.get_project_config("adminConsle.ymal")
+        self.config = PUtils.get_project_config("config.ymal")
         self.env = Tools.get_test_suit_env()
         
     
     @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
-    def test_transactions(self):    
+    def test_transactions(self):
+        Log.log_case_desc("测试非注册用户交易记录api:https://www.baidu.com")
         actor = "11335844"
+        Log.log_case_desc("测试交易记录显示：api:https://www.baidu.com")
         url = self.config["Url"]["transactions"]
         http_hander = HttpHandle()
         url = http_hander.replace_paramter_for_url(url, actor)
@@ -32,6 +34,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
     #测试无效id
     @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
     def test_transactions_with_invalid_actor(self):
+        Log.log_case_desc("测试非注册用户交易记录api:https://www.baidu.com")
         actor = "999911335844"
         url = self.config["Url"]["transactions"]
         http_hander = HttpHandle()
@@ -46,6 +49,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
     #POST /api/investment/filterInvestment
     @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
     def test_filterInvestment(self):
+        Log.log_case_desc("测试非注册用户交易记录api:https://www.baidu.com")
         url = self.config["Url"]["filterInvestment"]
         http_hander = HttpHandle()
         http_hander.update_header({'Accept': 'application/json', 'Content-Type':'application/json'})
@@ -63,6 +67,7 @@ class AdminConsoleCrmTest(unittest.TestCase):
     #https://drac-demo.pyQa.com/adminconsole/api/actor/{parameter}/investSummary
     @unittest.skipUnless(Tools.runCaseIn("smoke"),"skip case if not in tags")
     def test_investSummary(self):
+        Log.log_case_desc("测试非注册用户交易记录api:https://www.baidu.com")
         url = self.config["Url"]["investSummary"]
         actor = '11335844'
         http_hander = HttpHandle()
